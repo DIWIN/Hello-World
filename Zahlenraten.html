@@ -3,14 +3,63 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hello-World</title>
+    <title>Zahlenraten</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        
+        body {
+            background-color: aquamarine;
+        }
+        .inhalt {
+            text-align: center;
+        }
     </style>
     
 </head>
-<body>
-    <h1>Hallo zu Zahlenraten</h1>
+<body onload="geladen()">
+    <div class="inhalt">
+        <h1>Willkommen zu Zahlenraten</h1>
+        <h4>Ich habe mir eine Zahl zwischen 1 und 100 ausgedacht, versuch sie zu erraten</h4>
+        <!-- Ein Eingabefeld für den Wert -->
+        <input id="eingabe" type="text" placeholder="Rate mal..." onkeypress="tastatureingabe(event)"></input>
+        <!-- Einen Button, um den eingegebenen Wert zu prüfen -->
+        <button id="check" onclick="check()">Check</button>
+        <br><br>
+        <!-- Einen Button für ein neues Spiel -->
+        <button id="neu" onclick="neu()">Neues Spiel</button>
+    </div>
 </body>
+    <script>
+        let zufallszahl = -1;
+
+        function geladen() {
+            zufallszahl = Math.floor(Math.random() * 100 + 1);
+            console.log(zufallszahl);
+        }
+
+        function neu() {
+            zufallszahl = Math.floor(Math.random() * 100 + 1);
+        }
+
+        function check() {
+            var eingabe = document.getElementById("eingabe").value;
+            var zahl = Number(eingabe);
+            if (zahl < zufallszahl) {
+                alert("Zahl zu klein");
+            }
+            else if (zahl > zufallszahl) {
+                alert("Zahl zu groß");
+            }
+            else {
+                alert("Herzlichen Glückwunsch");
+            }
+        }
+
+        function tastatureingabe(e) {
+            if(e.key == "Enter")
+            {
+                check();
+            }
+        }
+
+    </script>
 </html>
