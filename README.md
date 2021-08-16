@@ -1,2 +1,1 @@
-Hello, World! I'm new to Git and GitHub
-###Hallo auch
+# Zahlenraten - Ein einfaches Spiel mit HTML, CSS und JavaScript
