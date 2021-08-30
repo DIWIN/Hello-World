@@ -7,50 +7,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            background-color: aquamarine;
+            /* background-color: aquamarine; */
+            background-image: url(Sand.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            text-align: center;
+        }
+        h1 {
+            font-size: 5vh;
+            border:10px solid blueviolet;
         }
         .inhalt {
-            text-align: center;
+            /* text-align: center; */
         }
     </style>
     
 </head>
 <body onload="geladen()">
-    <div class="inhalt">
+    <!-- <div class="inhalt"> -->
         <h1>Willkommen zu Zahlenraten</h1>
-        <h4>Ich habe mir eine Zahl zwischen 1 und 100 ausgedacht, versuch sie zu erraten</h4>
+        <h3>Ich habe mir eine Zahl zwischen 1 und 100 ausgedacht, versuch sie zu erraten</h3>
+        <!-- Einen Button für ein neues Spiel -->
+        <button id="neu" onclick="neu()">Neues Spiel</button>
         <!-- Ein Eingabefeld für den Wert -->
-        <input id="eingabe" type="text" placeholder="Rate mal..." onkeypress="tastatureingabe(event)"></input>
+        <!-- <input id="eingabe" type="text" placeholder="Rate mal..." onkeypress="tastatureingabe(event)"></input> -->
+        <input id="eingabe" type="text" placeholder="Rate mal..."></input>
         <!-- Einen Button, um den eingegebenen Wert zu prüfen -->
         <button id="check" onclick="check()">Check</button>
         <br><br>
-        <!-- Einen Button für ein neues Spiel -->
-        <button id="neu" onclick="neu()">Neues Spiel</button>
-    </div>
+        <h2 id="text">  </h2>
+        <img id="gruen" src="GruenerPfeil.png">
+        <img id="rot" src="RoterPfeil.png">
+        <img id="man" src="man.png" width="500" height="500">
+    <!-- </div> -->
+    <audio id="audiofile" preload="auto">
+        <source src="Applaus.mp3" />
+    </audio>
+    <video id="videofile" preload="auto" width="500" height="500">
+        <source src="manvideo.mp4" />
+    </video>
 </body>
     <script>
         let zufallszahl = -1;
 
         function geladen() {
             zufallszahl = Math.floor(Math.random() * 100 + 1);
+            document.getElementById("gruen").style.display = "none"; 
+            document.getElementById("rot").style.display = "none";
+            document.getElementById("man").style.display = "none";
+            document.getElementById("videofile").style.display = "none";
             console.log(zufallszahl);
         }
 
         function neu() {
             zufallszahl = Math.floor(Math.random() * 100 + 1);
+            document.getElementById("gruen").style.display = "none"; 
+            document.getElementById("rot").style.display = "none";
+            document.getElementById("man").style.display = "none";
+            document.getElementById("videofile").style.display = "none";
+            document.getElementById("text").innerText = "";
+            document.getElementById("eingabe").value = "";
         }
 
         function check() {
             var eingabe = document.getElementById("eingabe").value;
             var zahl = Number(eingabe);
             if (zahl < zufallszahl) {
-                alert("Zahl zu klein");
+                // alert("Zahl zu klein");
+                // document.getElementById("gruen").style.display = "inline"; 
+                /* document.getElementById("rot").style.display = "none";*/
+                document.getElementById("text").innerText = "Zahl zu klein!";
             }
             else if (zahl > zufallszahl) {
-                alert("Zahl zu groß");
+                // alert("Zahl zu groß");
+                // document.getElementById("gruen").style.display = "none"; 
+                // document.getElementById("rot").style.display = "inline"; 
+                document.getElementById("text").innerText = "Zahl zu groß!";
             }
             else {
-                alert("Herzlichen Glückwunsch");
+                // alert("Herzlichen Glückwunsch");
+                //document.getElementById("man").style.display = "inline";
+                document.getElementById("text").innerText = "Herzlichen Glückwunsch, Sie haben die Zahl erraten!";
+                document.getElementById("videofile").style.display = "inline";
+                document.getElementById("gruen").style.display = "none";
+                document.getElementById("rot").style.display = "none";
+                document.getElementById("audiofile").play();
+                document.getElementById("videofile").play();
             }
         }
 
