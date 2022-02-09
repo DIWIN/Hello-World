@@ -5,4 +5,4 @@ Nach jeder Eingabe sage ich Dir, ob Deine Zahl zu niedrig, zu hoch oder eben sch
 ***
 Viel Spaß beim Zahlenraten
 ***
-WIN
+**WIN** (Dietmar Winkler)
