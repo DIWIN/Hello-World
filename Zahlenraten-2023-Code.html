@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Das head-Element ist der Platz für ein paar Festlegungen und Design-Vorgaben (Style) -->
+    <title>Zahlenraten</title>
+    <style>
+    </style>
+</head>
+
+<body onload="geladen() ">
+</body>
+
+<script>
+    // Der script-Bereich beinhaltet Javascript-Code für das Verhalten und die Dynamik
+    function tastatureingabe(e) {
+        if (e.key == "Enter") {
+            check();
+            document.getElementById("eingabe").value = "";
+        }
+    }
+
+    let zufallszahl = -1;
+
+    function geladen() {
+        zufallszahl = Math.floor(Math.random() * 100 + 1);
+        document.getElementById("videofile").style.display = "none";
+        console.log(zufallszahl);
+    }
+
+    function check() {
+        let eingabe = document.getElementById("eingabe").value;
+        let zahl = Number(eingabe);
+        if (zahl < zufallszahl) {
+            document.getElementById("text").innerText = "Zahl zu klein!";
+        }
+        else if (zahl > zufallszahl) {
+            document.getElementById("text").innerText = "Zahl zu groß!";
+        }
+        else {
+            document.getElementById("text").innerText = "Herzlichen Glückwunsch, Sie haben die Zahl erraten!";
+            document.getElementById("audiofile").play();
+            document.getElementById("videofile").style.display = "inline";
+            document.getElementById("videofile").play();
+        }
+    }
+</script>
+
+</html>
