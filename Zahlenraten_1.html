@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zahlenraten</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            /* background-color: aquamarine; */
+            background-image: url(Sand.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            text-align: center;
+			animation: myAnim 5s ease 0s 1 normal forwards;
+			
+        }
+
+        h1 {
+            font-size: 5vh;
+            border:10px solid blueviolet;
+        }
+		
+		h3 {
+			font-size: 4vh;
+			text-shadow: 6px 6px 6px lime;
+			animation: myAnim2 1s ease 0s 1 normal forwards;
+		}
+
+		button, input {
+			font-size: 3vh;
+			border-radius: 10px;
+		}
+
+		#neu {
+            background-color: yellow;
+        }
+		
+		#check {
+			background-color: lightgreen;
+		}
+
+		@keyframes myAnim {
+			0% {
+				background-position: center top;
+				background-size: 100%;
+			}
+			100% {
+				background-position: center top;
+				background-size: 150%;
+			}
+		}
+		
+		@keyframes myAnim2 {
+			0% {
+				opacity: 0;
+				transform: translateX(-250px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}		
+    </style>
+</head>
+<body>
+	<h1>Willkommen zu Zahlenraten</h1>
+	<h3>Ich habe mir eine Zahl zwischen 1 und 100 ausgedacht, versuch sie zu erraten</h3>
+	<!-- Einen Button für ein neues Spiel -->
+	<!-- Ein Eingabefeld für den Wert -->
+	<!-- Einen Button, um den eingegebenen Wert zu prüfen -->
+	<!-- Zwei Leerzeilen -->
+	<!-- Einen Text für die Ausgabe, ob gewonnen -->
+	<!-- Das Bild für die Person, die sich freut -->
+	<!-- <img id="man" src="man.png" width="500" height="500"> -->
+	<!-- Die Ton-Datei für den Applaus -->
+</body>
+</html>
