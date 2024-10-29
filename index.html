@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Das head-Element ist der Platz für ein paar Festlegungen und Design-Vorgaben (Style) -->
+    <title>Zahlenraten</title>
+    <style>
+        h1 {
+            font-size: 5vh;
+            border: 10px solid blueviolet;
+        }
+
+        button, input {
+            font-size: 4vh;
+            border-radius: 10px;
+            background-color: gold;
+        }
+
+        body {
+            max-width: fit-content; 
+            margin: auto; 
+            text-align:center; 
+            background-color: lightblue
+            /* background-image: url(Sand.jpg); background-repeat: no-repeat; background-position: center top; */
+        }
+    </style>
+</head>
+
+<body onload="geladen() ">
+    <!-- Der body-Bereich ist der Platz für den eigentlichen Inhalt -->
+    <h1>&#128077; Willkommen zu Zahlenraten &#128526;</h1>
+    <h2>Ich habe mir eine Zahl zwischen 1 und 100 ausgedacht, versuch sie zu erraten</h3>
+        <!-- Ein Eingabefeld für den Wert -->
+        <input id="eingabe" type="text" placeholder="Rate mal..." onkeypress="tastatureingabe(event)"></input>
+        <!-- Einen Button, um den eingegebenen Wert zu prüfen -->
+        <button id="check" onclick="check()">Check</button>
+        <br>
+        <hr>
+        <h2 id="text">Ergebnis</h2>
+        <audio id="audiofile">
+            <source src="Applaus.mp3" />
+        </audio>
+        <video id="videofile" width="600" height="600">
+            <source src="manvideo.mp4" />
+        </video>
+        <!-- <a href="https://htmlcheatsheet.com/" target="_blank">HTML Cheatsheet</a> -->
+</body>
+
+<script>
+    // Der script-Bereich beinhaltet Javascript-Code für das Verhalten und die Dynamik
+    function tastatureingabe(e) {
+        if (e.key == "Enter") {
+            check();
+            document.getElementById("eingabe").value = "";
+        }
+    }
+
+    let zufallszahl = -1;
+
+    function geladen() {
+        zufallszahl = Math.floor(Math.random() * 100 + 1);
+        document.getElementById("videofile").style.display = "none";
+        console.log(zufallszahl);
+    }
+
+    function check() {
+        let eingabe = document.getElementById("eingabe").value;
+        let zahl = Number(eingabe);
+        if (zahl < zufallszahl) {
+            document.getElementById("text").innerText = "Zahl zu klein!";
+        }
+        else if (zahl > zufallszahl) {
+            document.getElementById("text").innerText = "Zahl zu groß!";
+        }
+        else {
+            document.getElementById("text").innerText = "Herzlichen Glückwunsch, Sie haben die Zahl erraten!";
+            document.getElementById("audiofile").play();
+            document.getElementById("videofile").style.display = "inline";
+            document.getElementById("videofile").play();
+        }
+    }
+</script>
+
+</html>
